@@ -57,15 +57,15 @@ Para confirmar cómo el comando A codificó cada instrucción sin necesidad de e
 
 | Iteración | Instrucción | AX después | CX después | IP siguiente | ¿LOOP salta? |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Inicial | `MOV CX,0004` | `0000`[cite: 7] | `0004`[cite: 7] | `0106`[cite: 7] | N/A |
-| 1 | `ADD AX,0002` | `0002`[cite: 7] | `0004`[cite: 7] | `0109`[cite: 7] | N/A |
-| 1 | `LOOP 0106` | `0002`[cite: 7] | `0003`[cite: 7] | `0106`[cite: 7] | Sí |
-| 2 | `ADD AX,0002` | `0004`[cite: 7, 8] | `0003`[cite: 7, 8] | `0109`[cite: 7, 8] | N/A |
-| 2 | `LOOP 0106` | `0004`[cite: 8] | `0002`[cite: 8] | `0106`[cite: 8] | Sí |
-| 3 | `ADD AX,0002` | `0006`[cite: 8] | `0002`[cite: 8] | `0109`[cite: 8] | N/A |
-| 3 | `LOOP 0106` | `0006`[cite: 8] | `0001`[cite: 8] | `0106`[cite: 8] | Sí |
-| 4 | `ADD AX,0002` | `0008`[cite: 8] | `0001`[cite: 8] | `0109`[cite: 8] | N/A |
-| 4 | `LOOP 0106` | `0008`[cite: 8] | `0000`[cite: 8] | `010B`[cite: 8] | No |
+| Inicial | `MOV CX,0004` | `0000` | `0004` | `0106` | N/A |
+| 1 | `ADD AX,0002` | `0002` | `0004` | `0109` | N/A |
+| 1 | `LOOP 0106` | `0002` | `0003` | `0106` | Sí |
+| 2 | `ADD AX,0002` | `0004` | `0003` | `0109` | N/A |
+| 2 | `LOOP 0106` | `0004` | `0002` | `0106` | Sí |
+| 3 | `ADD AX,0002` | `0006` | `0002` | `0109` | N/A |
+| 3 | `LOOP 0106` | `0006` | `0001` | `0106` | Sí |
+| 4 | `ADD AX,0002` | `0008` | `0001` | `0109` | N/A |
+| 4 | `LOOP 0106` | `0008` | `0000` | `010B` | No |
 
 **Verificación:** Se confirma que el registro AX alcanza el valor `0x0008` (8 en decimal) exactamente cuando la instrucción `LOOP` finalmente no salta y el Puntero de Instrucción avanza a `010B`[cite: 8]. Esta salida del bucle se produce de forma correcta porque el registro contador CX se reduce a `0x0000`[cite: 8].
 
